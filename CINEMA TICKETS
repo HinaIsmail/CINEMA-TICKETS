@@ -1,0 +1,56 @@
+ # Cinema Tickets
+![image.png](attachment:434058d1-c5c4-4655-b03f-9bc75696ad59.png)
+
+Cinema tickets grant entry to view films at theaters. They can be purchased online, through mobile apps, or at the box office. Prices vary based on factors such as location, time, day, and seat type. Discounts are often available for students, seniors, and children. Modern cinemas may offer additional features like reserved seating, reclining chairs, and premium formats such as IMAX or 3D. Tickets usually include a seat assignment and showtime, ensuring a specific spot for a particular screening.
+
+
+
+
+
+
+
+# Import
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+
+# Read Data
+df = pd.read_csv('../input/cinema-ticket/cinemaTicket_Ref.csv')
+df.head()
+df.info()
+df.describe()
+# Missing Value
+df.isnull()
+df.isnull().sum()
+df['cinema_code'].value_counts()
+# Count Unique Number
+df['cinema_code'].unique()
+df.shape
+df.dtypes
+df.columns
+df['date'] = pd.to_datetime(df['date'])
+df.dtypes
+df['date'].value_counts()
+# Plots
+sns.heatmap(df.corr())
+plt.show()
+sns.lineplot(x=df['month'],y=df['total_sales'])
+
+plt.title("Sales of Ticket Movie")
+plt.xlabel("Month")
+plt.ylabel("Total of Sale")
+
+plt.show()
+df['film_code'].value_counts()
+df['quarter'].value_counts()
+sns.barplot(x=df['film_code'],y=df['total_sales'])
+
+plt.show()
+sns.barplot(x=df['quarter'],y=df['total_sales'])
+sns.lineplot(x=df['quarter'],y=df['total_sales'])
+
+plt.title("Total Sales")
+plt.xlabel("Quarter")
+plt.ylabel("Total Sales")
+plt.show()
